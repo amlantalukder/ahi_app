@@ -110,7 +110,7 @@ function App() {
       </div>
       <div id='results' className='results' style={{display: styles['results']}}>
         <div className='heading'>
-          <strong>Results</strong>
+          <strong>OSA Prediction</strong>
           <a href="#" className='close' onClick={hideResults} />
         </div> 
         {(ahi_level > 0) && 
