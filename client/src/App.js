@@ -18,9 +18,11 @@ function App() {
 
   const validate = () => {
     for (let i in predictors) {
-      let [name, , min, max] = predictors[i];
+      let [name, title, min, max] = predictors[i];
       let value = data[name];
-      if ((name === "sex" && value !== "M" && value !== "F") || parseFloat(value) < min || parseFloat(value) > max) {
+      console.log(name, value, min, max)
+      if ((name === "sex" && value !== "M" && value !== "F") || value === '' || parseFloat(value) < min || parseFloat(value) > max) {
+        setStatus(`Invalid value was assigned to ${title}, value must be within ${min}-${max}`);
         return false;
       }
     }

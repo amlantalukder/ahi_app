@@ -196,6 +196,8 @@
 .content-page--inner-wrapper div.error {
   display: flex;
   justify-content: center;
+  font-size: 0.8em;
+  padding: 5px;
   color: #ef0707;
 }
 
