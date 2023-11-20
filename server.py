@@ -57,15 +57,32 @@ def predict(x):
 # ---------------------------------------------------------------
 def validate(data):
 
+    predictors = {"sex": ["Sex", 0, 1],
+                  "age": ["Age (Years)", 0, 120],
+                  "weight": ["Weight (kg)", 4, 300],
+                  "height": ["Height (cm)", 50, 300],
+                  "initialo2": ["O2 (%)", 90, 100],
+                  "initialhr": ["Heart Rate (bpm)", 40, 150],
+                  "initialrr": ["Respiratory Rate (bpm)", 5, 50]
+    }
+
     assert type(data) == dict, ValueError('Invalid data format')
 
     x = []
-    for predictor in ['sex', 'age', 'weight', 'height', 'initialo2', 'initialhr', 'initialrr']:
+    for predictor in predictors:
         assert predictor in data, ValueError('Predictor not found')
         if predictor == 'sex':
             x.append(le.transform([data[predictor]])[0])
         else:
-            x.append(float(data[predictor]))
+            try:
+                value = float(data[predictor])
+            except:
+                raise ValueError(f'Invalid value was assigned to {predictors[predictor][0]}, value must be within {predictors[predictor][1]}-{predictors[predictor][2]}')
+            
+            if value not in range(predictors[predictor][1], predictors[predictor][2]+1):
+                raise ValueError(f'Invalid value was assigned to {predictors[predictor][0]}, value must be within {predictors[predictor][1]}-{predictors[predictor][2]}')
+            
+            x.append(value)
 
     col_names = ['Sex', 'Age', 'Weight', 'Height', 'InitialO2', 'InitialHR', 'InititalRR']
     x = pd.DataFrame([x], columns=col_names)
@@ -74,7 +91,7 @@ def validate(data):
     return x
 
 # ---------------------------------------------------------------
-@app.route('/api/test', methods=['GET'])
+@app.route('/ahi/api/test', methods=['GET'])
 @cross_origin()
 def testServer():
     data = request.args.get('data')
@@ -83,19 +100,19 @@ def testServer():
     
 
 # ---------------------------------------------------------------
-@app.route('/api/', methods=['POST'])
+@app.route('/ahi/api/', methods=['POST'])
 @cross_origin()
 def getAhi():
     lprint(request.json)
     try:
         x = validate(request.json)
     except ValueError as e:
-        return jsonify({'error': e})
+        return jsonify({'error': str(e)})
     label = predict(x)
     lprint(x, label)
     return jsonify({'ahi_level': float(label)})
 
-@app.route('/')
+@app.route('/ahi')
 @cross_origin()
 def serve():
     return send_from_directory(app.static_folder, 'index.html')

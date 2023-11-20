@@ -47,16 +47,22 @@ function App() {
 
     setStatus("Fetching data from server...");
 
-    fetch("/api/", requestOptions)
+    fetch("/ahi/api", requestOptions)
       .then((response) => {
         console.log(response);
         if (response.ok) return response.json();
         throw new Error("Server Busy");
       })
       .then((d) => {
-        setAHILevel(d.ahi_level);
-        setStatus("");
-        showResults();
+        console.log("data", d);
+        if (d.error) {
+          console.log(d.error);
+          setStatus(d.error);
+        } else {
+          setAHILevel(d.ahi_level);
+          setStatus("");
+          showResults();
+        }
       })
       .catch((error) => {
         console.log(error);
