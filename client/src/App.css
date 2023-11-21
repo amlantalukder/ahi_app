@@ -147,7 +147,7 @@
   margin-bottom: 2px;
 }
 
-.content-page--inner-wrapper div.sex{
+.content-page--inner-wrapper div.radio {
   width:50%;
   display: flex;
   justify-content: space-around;
@@ -156,13 +156,30 @@
   }
 }
 
-.content-page--inner-wrapper div.sex div{
+.content-page--inner-wrapper div.radio div{
   display: flex;
   width: 100px;
 }
 
-.content-page--inner-wrapper div.sex label{
+.content-page--inner-wrapper div.radio label{
   text-align: left;
+}
+
+.content-page--inner-wrapper div.fieldset {
+  border: 1px solid #ddd;
+  border-radius: 2%;
+  padding: 5px 0;
+}
+
+.content-page--inner-wrapper div.metric-si {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.content-page--inner-wrapper div.metric-si input {
+  width: 100%;
 }
 
 .content-page--inner-wrapper div.submit-btn{

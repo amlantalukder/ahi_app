@@ -59,8 +59,8 @@ def validate(data):
 
     predictors = {"sex": ["Sex", 0, 1],
                   "age": ["Age (Years)", 0, 120],
-                  "weight": ["Weight (kg)", 4, 300],
-                  "height": ["Height (cm)", 50, 300],
+                  "weight": ["Weight (kg)", 3, 300],
+                  "height": ["Height (cm)", 30, 300],
                   "initialo2": ["O2 (%)", 90, 100],
                   "initialhr": ["Heart Rate (bpm)", 40, 150],
                   "initialrr": ["Respiratory Rate (bpm)", 5, 50]
@@ -79,7 +79,7 @@ def validate(data):
             except:
                 raise ValueError(f'Invalid value was assigned to {predictors[predictor][0]}, value must be within {predictors[predictor][1]}-{predictors[predictor][2]}')
             
-            if value not in range(predictors[predictor][1], predictors[predictor][2]+1):
+            if value < predictors[predictor][1] or value > predictors[predictor][2]:
                 raise ValueError(f'Invalid value was assigned to {predictors[predictor][0]}, value must be within {predictors[predictor][1]}-{predictors[predictor][2]}')
             
             x.append(value)
@@ -128,9 +128,9 @@ if __name__ == '__main__':
     
     app.logger.info(sys.argv)
     
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 2:
+        ip_address, port = sys.argv[1:3]
+    elif len(sys.argv) > 1:
         ip_address = sys.argv[1]
-    elif len(sys.argv) > 2:
-        ip_address, port = sys.argv[1:3]    
     
     app.run(host=ip_address, port=port, debug=False)
