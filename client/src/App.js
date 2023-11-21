@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function App() {
   const [data, setData] = useState({ sex: "M", age: "", weight: "", weight_lb: "", height: "", height_ft: "", height_in: "", initialo2: "", initialhr: "", initialrr: "" });
-  const [metric, setMetric] = useState('EN');
+  const [metric, setMetric] = useState('METRIC');
   const [ahi_level, setAHILevel] = useState(-1);
   const [status_text, setStatus] = useState("");
   const [styles, setStyles] = useState({ results: "none" });
@@ -16,10 +16,10 @@ function App() {
   ];
 
   const predictors_unit_based = {
-    EN: {weight: ["Weight (kg)", [3, 300]], 
+    METRIC: {weight: ["Weight (kg)", [3, 300]], 
         height: ["Height (cm)", [30, 300]]
     },
-    SI: {
+    IMPERIAL: {
       weight_lb: ["Weight (lb)", [8, 700]], 
       height_ft: ["Height", [1, 10]],
       height_in: ["Height", [0, 11]]
@@ -153,15 +153,15 @@ function App() {
                           })}
                         </div>
                       ) : (
-                        <input type="number" name={c} placeholder={`${range[0]}-${range[1]}`} value={data[c]} onChange={onChange} min={range[0]} max={range[1]} step={(c !== "age") ? ".01" : ''} />
+                        <input type="number" name={c} placeholder={`${range[0]}-${range[1]}`} value={data[c]} onChange={onChange} min={range[0]} max={range[1]} />
                       )}
                     </div>
                     {(c === "age") && (
                       <div className="fieldset">
                         <div className="predictor">
-                          <label>Metric:</label>
+                          <label>Unit System:</label>
                           <div className="radio">
-                            {[["English", "EN", "_en"], ["SI", "SI", "_si"]].map(([k, v, suffix]) => {
+                            {[["Imperial", "IMPERIAL", "_imp"], ["Metric", "METRIC", "_met"]].map(([k, v, suffix]) => {
                               return (
                                 <div>
                                   <input type="radio" id={`${c}${suffix}`} name="metric" value={v} checked={metric === v} onChange={onChangeMetric}></input>
@@ -172,22 +172,22 @@ function App() {
                           </div>
                         </div>
                         
-                        {(metric === 'EN') ? (
+                        {(metric === 'METRIC') ? (
                           <>
                           <div className="predictor">
                             <label>{predictors_unit_based[metric]['weight'][0]}:</label>
-                            <input type="number" name='weight' placeholder={`${predictors_unit_based[metric]['weight'][1][0]}-${predictors_unit_based[metric]['weight'][1][1]}`} value={data['weight']} onChange={onChange} min={predictors_unit_based[metric]['weight'][1][0]} max={predictors_unit_based[metric]['weight'][1][1]} step=".01" />
+                            <input type="number" name='weight' placeholder={`${predictors_unit_based[metric]['weight'][1][0]}-${predictors_unit_based[metric]['weight'][1][1]}`} value={data['weight']} onChange={onChange} min={predictors_unit_based[metric]['weight'][1][0]} max={predictors_unit_based[metric]['weight'][1][1]} />
                           </div>
                           <div className="predictor">
                             <label>{predictors_unit_based[metric]['height'][0]}:</label>
-                            <input type="number" name='height' placeholder={`${predictors_unit_based[metric]['height'][1][0]}-${predictors_unit_based[metric]['height'][1][1]}`} value={data['height']} onChange={onChange} min={predictors_unit_based[metric]['height'][1][0]} max={predictors_unit_based[metric]['height'][1][1]} step=".01" />
+                            <input type="number" name='height' placeholder={`${predictors_unit_based[metric]['height'][1][0]}-${predictors_unit_based[metric]['height'][1][1]}`} value={data['height']} onChange={onChange} min={predictors_unit_based[metric]['height'][1][0]} max={predictors_unit_based[metric]['height'][1][1]} />
                           </div>
                           </>
                         ):(
                           <>
                           <div className="predictor">
                             <label>{predictors_unit_based[metric]['weight_lb'][0]}:</label>
-                            <input type="number" name='weight_lb' placeholder={`${predictors_unit_based[metric]['weight_lb'][1][0]}-${predictors_unit_based[metric]['weight_lb'][1][1]}`} value={data['weight_lb']} onChange={onChange} min={predictors_unit_based[metric]['weight_lb'][1][0]} max={predictors_unit_based[metric]['weight_lb'][1][1]} step=".01" />
+                            <input type="number" name='weight_lb' placeholder={`${predictors_unit_based[metric]['weight_lb'][1][0]}-${predictors_unit_based[metric]['weight_lb'][1][1]}`} value={data['weight_lb']} onChange={onChange} min={predictors_unit_based[metric]['weight_lb'][1][0]} max={predictors_unit_based[metric]['weight_lb'][1][1]} />
                           </div>
                           <div className="predictor">
                             <label>{predictors_unit_based[metric]['height_ft'][0]}:</label>
