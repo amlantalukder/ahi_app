@@ -246,7 +246,7 @@ function App() {
               );
             })}
             <div className="submit-btn">
-              <input type="submit" value="Predict OSA" />
+              <input type="submit" value="Predict my OSA risk" />
             </div>
           </div>
         </form>

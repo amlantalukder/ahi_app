@@ -271,6 +271,9 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  @media (max-width: 500px) {
+    font-size: 0.8em;
+  }
 }
 
 .content-page--inner-wrapper input[type='submit']:hover {
