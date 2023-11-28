@@ -110,6 +110,9 @@
   border-top-left-radius: 2%;
   border-top-right-radius: 2%;
   padding: 10px;
+  @media (max-width: 500px) {
+    padding: 5px;
+  }
 }
 
 .content-page--inner-wrapper div.predictor, .submit-btn, .result-container{
