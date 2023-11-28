@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function App() {
   const [data, setData] = useState({ sex: "M", age: "", weight: "", weight_lb: "", height: "", height_ft: "", height_in: "", initialo2: "", initialhr: "", initialrr: "" });
-  const [metric, setMetric] = useState('METRIC');
+  const [metric, setMetric] = useState("METRIC");
   const [ahi_level, setAHILevel] = useState(-1);
   const [status_text, setStatus] = useState("");
   const [styles, setStyles] = useState({ results: "none" });
@@ -16,26 +16,23 @@ function App() {
   ];
 
   const predictors_unit_based = {
-    METRIC: {weight: ["Weight (kg)", [3, 300]], 
-        height: ["Height (cm)", [30, 300]]
-    },
+    METRIC: { weight: ["Weight (kg)", [3, 300]], height: ["Height (cm)", [30, 300]] },
     IMPERIAL: {
-      weight_lb: ["Weight (lb)", [8, 700]], 
+      weight_lb: ["Weight (lb)", [8, 700]],
       height_ft: ["Height", [1, 10]],
-      height_in: ["Height", [0, 11]]
-    }
-  }
+      height_in: ["Height", [0, 11]],
+    },
+  };
 
   const validate = () => {
     for (let i in predictors) {
       let [name, title, [min, max]] = predictors[i];
       let value = data[name];
-      console.log(name, value, min, max)
-      if (value === '') {
+      console.log(name, value, min, max);
+      if (value === "") {
         setStatus(`No value was assigned to ${title}`);
         return false;
-      }
-      else if (name !== "sex" && parseFloat(value) < min || parseFloat(value) > max) {
+      } else if ((name !== "sex" && parseFloat(value) < min) || parseFloat(value) > max) {
         setStatus(`Invalid value was assigned to ${title}, value must be within ${min}-${max}`);
         return false;
       }
@@ -44,12 +41,11 @@ function App() {
     for (let name in predictors_unit_based[metric]) {
       let [title, [min, max]] = predictors_unit_based[metric][name];
       let value = data[name];
-      console.log(name, value, min, max)
-      if (value === '') {
+      console.log(name, value, min, max);
+      if (value === "") {
         setStatus(`No value was assigned to ${title}`);
         return false;
-      }
-      else if (parseFloat(value) < min || parseFloat(value) > max) {
+      } else if (parseFloat(value) < min || parseFloat(value) > max) {
         setStatus(`Invalid value was assigned to ${title}, value must be within ${min}-${max}`);
         return false;
       }
@@ -61,16 +57,13 @@ function App() {
     let name = e.target.name;
     let value = e.target.value;
 
-    if(name == 'weight_lb'){
-      setData({ ...data, [name]: value, ['weight']: (0.454 * parseFloat(value)).toString()});
-    }
-    else if(name == 'height_ft'){
-      setData({ ...data, [name]: value, ['height']: (2.54 * (parseFloat(value) * 12 + parseFloat(data['height_in']))).toString()});
-    }
-    else if(name == 'height_in'){
-      setData({ ...data, [name]: value, ['height']: (2.54 * (parseFloat(data['height_ft']) * 12 + parseFloat(value))).toString()});
-    }
-    else{
+    if (name === "weight_lb") {
+      setData({ ...data, [name]: value, ["weight"]: (0.454 * parseFloat(value)).toString() });
+    } else if (name === "height_ft") {
+      setData({ ...data, [name]: value, ["height"]: (2.54 * (parseFloat(value) * 12 + parseFloat(data["height_in"]))).toString() });
+    } else if (name === "height_in") {
+      setData({ ...data, [name]: value, ["height"]: (2.54 * (parseFloat(data["height_ft"]) * 12 + parseFloat(value))).toString() });
+    } else {
       setData({ ...data, [name]: value });
     }
   };
@@ -79,7 +72,7 @@ function App() {
     let value = e.target.value;
     console.log(metric);
     setMetric(value);
-    setData({ ...data, weight:'', weight_lb:'', height:'', height_ft:'', height_in:''})
+    setData({ ...data, weight: "", weight_lb: "", height: "", height_ft: "", height_in: "" });
     console.log(metric);
   };
 
@@ -99,7 +92,7 @@ function App() {
     console.log("Fetching...");
     setStatus("Fetching data from server...");
 
-    fetch("/ahi/api", requestOptions)
+    fetch("/ahi/api/", requestOptions)
       .then((response) => {
         console.log(response);
         if (response.ok) return response.json();
@@ -137,74 +130,121 @@ function App() {
           <div className="predictors">
             {predictors.map(([c, v, range]) => {
               return (
-                (c !== "weight" && c !== "height") && (
+                c !== "weight" &&
+                c !== "height" && (
                   <>
                     <div className="predictor">
                       <label>{v}:</label>
                       {c === "sex" ? (
                         <div className="radio">
-                          {[["Male", "M", "_male"], ["Female", "F", "_female"]].map(([k, v, suffix]) => {
+                          {[
+                            ["Male", "M", "_male"],
+                            ["Female", "F", "_female"],
+                          ].map(([k, v, suffix]) => {
                             return (
                               <div>
                                 <input type="radio" id={`${c}${suffix}`} name={c} value={v} checked={data[c] === v} onChange={onChange}></input>
                                 <label htmlFor={`${c}${suffix}`}>{k}</label>
                               </div>
-                            )
+                            );
                           })}
                         </div>
                       ) : (
                         <input type="number" name={c} placeholder={`${range[0]}-${range[1]}`} value={data[c]} onChange={onChange} min={range[0]} max={range[1]} />
                       )}
                     </div>
-                    {(c === "age") && (
+                    {c === "age" && (
                       <div className="fieldset">
                         <div className="predictor">
                           <label>Unit System:</label>
                           <div className="radio">
-                            {[["Imperial", "IMPERIAL", "_imp"], ["Metric", "METRIC", "_met"]].map(([k, v, suffix]) => {
+                            {[
+                              ["Imperial", "IMPERIAL", "_imp"],
+                              ["Metric", "METRIC", "_met"],
+                            ].map(([k, v, suffix]) => {
                               return (
                                 <div>
                                   <input type="radio" id={`${c}${suffix}`} name="metric" value={v} checked={metric === v} onChange={onChangeMetric}></input>
                                   <label htmlFor={`${c}${suffix}`}>{k}</label>
                                 </div>
-                              )
+                              );
                             })}
                           </div>
                         </div>
-                        
-                        {(metric === 'METRIC') ? (
+
+                        {metric === "METRIC" ? (
                           <>
-                          <div className="predictor">
-                            <label>{predictors_unit_based[metric]['weight'][0]}:</label>
-                            <input type="number" name='weight' placeholder={`${predictors_unit_based[metric]['weight'][1][0]}-${predictors_unit_based[metric]['weight'][1][1]}`} value={data['weight']} onChange={onChange} min={predictors_unit_based[metric]['weight'][1][0]} max={predictors_unit_based[metric]['weight'][1][1]} />
-                          </div>
-                          <div className="predictor">
-                            <label>{predictors_unit_based[metric]['height'][0]}:</label>
-                            <input type="number" name='height' placeholder={`${predictors_unit_based[metric]['height'][1][0]}-${predictors_unit_based[metric]['height'][1][1]}`} value={data['height']} onChange={onChange} min={predictors_unit_based[metric]['height'][1][0]} max={predictors_unit_based[metric]['height'][1][1]} />
-                          </div>
-                          </>
-                        ):(
-                          <>
-                          <div className="predictor">
-                            <label>{predictors_unit_based[metric]['weight_lb'][0]}:</label>
-                            <input type="number" name='weight_lb' placeholder={`${predictors_unit_based[metric]['weight_lb'][1][0]}-${predictors_unit_based[metric]['weight_lb'][1][1]}`} value={data['weight_lb']} onChange={onChange} min={predictors_unit_based[metric]['weight_lb'][1][0]} max={predictors_unit_based[metric]['weight_lb'][1][1]} />
-                          </div>
-                          <div className="predictor">
-                            <label>{predictors_unit_based[metric]['height_ft'][0]}:</label>
-                            <div className="metric-si">
-                              <input type="number" name={'height_ft'} placeholder={`${predictors_unit_based[metric]['height_ft'][1][0]}-${predictors_unit_based[metric]['height_ft'][1][1]}`} value={data['height_ft']} onChange={onChange} min={predictors_unit_based[metric]['height_ft'][1][0]} max={predictors_unit_based[metric]['height_ft'][1][1]} />
-                              <label>(ft)</label>
-                              <input type="number" name={'height_in'} placeholder={`${predictors_unit_based[metric]['height_in'][1][0]}-${predictors_unit_based[metric]['height_in'][1][1]}`} value={data['height_in']} onChange={onChange} min={predictors_unit_based[metric]['height_in'][1][0]} max={predictors_unit_based[metric]['height_in'][1][1]} />
-                              <label>(in)</label>
+                            <div className="predictor">
+                              <label>{predictors_unit_based[metric]["weight"][0]}:</label>
+                              <input
+                                type="number"
+                                name="weight"
+                                placeholder={`${predictors_unit_based[metric]["weight"][1][0]}-${predictors_unit_based[metric]["weight"][1][1]}`}
+                                value={data["weight"]}
+                                onChange={onChange}
+                                min={predictors_unit_based[metric]["weight"][1][0]}
+                                max={predictors_unit_based[metric]["weight"][1][1]}
+                              />
                             </div>
-                          </div>
+                            <div className="predictor">
+                              <label>{predictors_unit_based[metric]["height"][0]}:</label>
+                              <input
+                                type="number"
+                                name="height"
+                                placeholder={`${predictors_unit_based[metric]["height"][1][0]}-${predictors_unit_based[metric]["height"][1][1]}`}
+                                value={data["height"]}
+                                onChange={onChange}
+                                min={predictors_unit_based[metric]["height"][1][0]}
+                                max={predictors_unit_based[metric]["height"][1][1]}
+                              />
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="predictor">
+                              <label>{predictors_unit_based[metric]["weight_lb"][0]}:</label>
+                              <input
+                                type="number"
+                                name="weight_lb"
+                                placeholder={`${predictors_unit_based[metric]["weight_lb"][1][0]}-${predictors_unit_based[metric]["weight_lb"][1][1]}`}
+                                value={data["weight_lb"]}
+                                onChange={onChange}
+                                min={predictors_unit_based[metric]["weight_lb"][1][0]}
+                                max={predictors_unit_based[metric]["weight_lb"][1][1]}
+                              />
+                            </div>
+                            <div className="predictor">
+                              <label>{predictors_unit_based[metric]["height_ft"][0]}:</label>
+                              <div className="metric-si">
+                                <input
+                                  type="number"
+                                  name={"height_ft"}
+                                  placeholder={`${predictors_unit_based[metric]["height_ft"][1][0]}-${predictors_unit_based[metric]["height_ft"][1][1]}`}
+                                  value={data["height_ft"]}
+                                  onChange={onChange}
+                                  min={predictors_unit_based[metric]["height_ft"][1][0]}
+                                  max={predictors_unit_based[metric]["height_ft"][1][1]}
+                                />
+                                <label>(ft)</label>
+                                <input
+                                  type="number"
+                                  name={"height_in"}
+                                  placeholder={`${predictors_unit_based[metric]["height_in"][1][0]}-${predictors_unit_based[metric]["height_in"][1][1]}`}
+                                  value={data["height_in"]}
+                                  onChange={onChange}
+                                  min={predictors_unit_based[metric]["height_in"][1][0]}
+                                  max={predictors_unit_based[metric]["height_in"][1][1]}
+                                />
+                                <label>(in)</label>
+                              </div>
+                            </div>
                           </>
                         )}
                       </div>
                     )}
                   </>
                 )
-              )
+              );
             })}
             <div className="submit-btn">
               <input type="submit" value="Predict OSA" />
