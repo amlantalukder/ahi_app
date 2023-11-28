@@ -25,6 +25,7 @@ function App() {
   };
 
   const validate = () => {
+    console.log(data);
     for (let i in predictors) {
       let [name, title, [min, max]] = predictors[i];
       let value = data[name];
@@ -39,7 +40,9 @@ function App() {
     }
 
     for (let name in predictors_unit_based[metric]) {
-      let [title, [min, max]] = predictors_unit_based[metric][name];
+      let title = predictors_unit_based[metric][name][0];
+      let min = predictors_unit_based[metric][name][1][0];
+      let max = predictors_unit_based[metric][name][1].slice(-1);
       let value = data[name];
       console.log(name, value, min, max);
       if (value === "") {
@@ -56,7 +59,6 @@ function App() {
   const onChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
-    console.log(name, value);
 
     if (name === "weight_lb") {
       setData({ ...data, [name]: value, ["weight"]: (0.454 * parseFloat(value)).toString() });
