@@ -2,25 +2,25 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [data, setData] = useState({ sex: "M", age: "", weight: "", weight_lb: "", height: "", height_ft: "", height_in: "", initialo2: "", initialhr: "", initialrr: "" });
-  const [metric, setMetric] = useState("METRIC");
+  const [data, setData] = useState({ sex: "M", age: "", weight: "", weight_lb: "", height: "", height_ft: "2", height_in: "0", initialo2: "", initialhr: "", initialrr: "" });
+  const [metric, setMetric] = useState("IMPERIAL");
   const [ahi_level, setAHILevel] = useState(-1);
   const [status_text, setStatus] = useState("");
   const [styles, setStyles] = useState({ results: "none" });
   const predictors = [
-    ["sex", "Sex", [0, 1]],
-    ["age", "Age (Years)", [0, 120]],
-    ["initialo2", "O2 (%)", [90, 100]],
-    ["initialhr", "Heart Rate (bpm)", [40, 150]],
-    ["initialrr", "Respiratory Rate (bpm)", [5, 50]],
+    ["sex", "Sex", [0, 1], ],
+    ["age", "Age (Years)", [0, 120], "13 up"],
+    ["initialo2", "O2 (%)", [90, 100], "e.g., 98"],
+    ["initialhr", "Heart Rate (bpm)", [40, 150], "e.g., 70"],
+    ["initialrr", "Respiratory Rate (bpm)", [5, 50], "e.g., 16"],
   ];
 
   const predictors_unit_based = {
-    METRIC: { weight: ["Weight (kg)", [3, 300]], height: ["Height (cm)", [30, 300]] },
+    METRIC: { weight: ["Weight (kg)", [3, 300], "e.g., 70"], height: ["Height (cm)", [30, 300], "e.g. 180"]},
     IMPERIAL: {
-      weight_lb: ["Weight (lb)", [8, 700]],
-      height_ft: ["Height", [1, 10]],
-      height_in: ["Height", [0, 11]],
+      weight_lb: ["Weight (lb)", [8, 700], "e.g. 150"],
+      height_ft: ["Height", [2, 3, 4, 5, 6, 7]],
+      height_in: ["Height", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]],
     },
   };
 
@@ -56,6 +56,7 @@ function App() {
   const onChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
+    console.log(name, value);
 
     if (name === "weight_lb") {
       setData({ ...data, [name]: value, ["weight"]: (0.454 * parseFloat(value)).toString() });
@@ -128,7 +129,7 @@ function App() {
       <div id="app" className="container">
         <form onSubmit={onSubmit} method="post">
           <div className="predictors">
-            {predictors.map(([c, v, range]) => {
+            {predictors.map(([c, v, range, placeholder]) => {
               return (
                 c !== "weight" &&
                 c !== "height" && (
@@ -150,7 +151,7 @@ function App() {
                           })}
                         </div>
                       ) : (
-                        <input type="number" name={c} placeholder={`${range[0]}-${range[1]}`} value={data[c]} onChange={onChange} min={range[0]} max={range[1]} />
+                        <input type="number" name={c} placeholder={placeholder} value={data[c]} onChange={onChange} min={range[0]} max={range[1]} />
                       )}
                     </div>
                     {c === "age" && (
@@ -179,7 +180,7 @@ function App() {
                               <input
                                 type="number"
                                 name="weight"
-                                placeholder={`${predictors_unit_based[metric]["weight"][1][0]}-${predictors_unit_based[metric]["weight"][1][1]}`}
+                                placeholder={predictors_unit_based[metric]["weight"][2]}
                                 value={data["weight"]}
                                 onChange={onChange}
                                 min={predictors_unit_based[metric]["weight"][1][0]}
@@ -191,7 +192,7 @@ function App() {
                               <input
                                 type="number"
                                 name="height"
-                                placeholder={`${predictors_unit_based[metric]["height"][1][0]}-${predictors_unit_based[metric]["height"][1][1]}`}
+                                placeholder={predictors_unit_based[metric]["height"][2]}
                                 value={data["height"]}
                                 onChange={onChange}
                                 min={predictors_unit_based[metric]["height"][1][0]}
@@ -206,7 +207,7 @@ function App() {
                               <input
                                 type="number"
                                 name="weight_lb"
-                                placeholder={`${predictors_unit_based[metric]["weight_lb"][1][0]}-${predictors_unit_based[metric]["weight_lb"][1][1]}`}
+                                placeholder={predictors_unit_based[metric]["weight_lb"][2]}
                                 value={data["weight_lb"]}
                                 onChange={onChange}
                                 min={predictors_unit_based[metric]["weight_lb"][1][0]}
@@ -216,26 +217,22 @@ function App() {
                             <div className="predictor">
                               <label>{predictors_unit_based[metric]["height_ft"][0]}:</label>
                               <div className="metric-si">
-                                <input
-                                  type="number"
-                                  name={"height_ft"}
-                                  placeholder={`${predictors_unit_based[metric]["height_ft"][1][0]}-${predictors_unit_based[metric]["height_ft"][1][1]}`}
-                                  value={data["height_ft"]}
-                                  onChange={onChange}
-                                  min={predictors_unit_based[metric]["height_ft"][1][0]}
-                                  max={predictors_unit_based[metric]["height_ft"][1][1]}
-                                />
+                                <div className="metric-si-comp">
+                                <select name={"height_ft"} onChange={onChange} defaultValue={data["height_ft"]}>
+                                {predictors_unit_based[metric]["height_ft"][1].map((i) => {
+                                  return <option value={i}>{i}</option>
+                                })}
+                                </select>
                                 <label>(ft)</label>
-                                <input
-                                  type="number"
-                                  name={"height_in"}
-                                  placeholder={`${predictors_unit_based[metric]["height_in"][1][0]}-${predictors_unit_based[metric]["height_in"][1][1]}`}
-                                  value={data["height_in"]}
-                                  onChange={onChange}
-                                  min={predictors_unit_based[metric]["height_in"][1][0]}
-                                  max={predictors_unit_based[metric]["height_in"][1][1]}
-                                />
+                                </div>
+                                <div className="metric-si-comp">
+                                <select name={"height_in"} onChange={onChange} defaultValue={data["height_in"]}>
+                                {predictors_unit_based[metric]["height_in"][1].map((i) => {
+                                  return <option value={i}>{i}</option>
+                                })}
+                                </select>
                                 <label>(in)</label>
+                                </div>
                               </div>
                             </div>
                           </>

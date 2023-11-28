@@ -120,16 +120,17 @@
 }
 
 .content-page--inner-wrapper label{
-  width: 50%;
+  width: 40%;
   text-align: right;
   padding-right: 10px;
 }
 
-.content-page--inner-wrapper input[type='number']{
-  width: 50%;
+.content-page--inner-wrapper input[type='number'], select{
+  width: 60%;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 1.1em;
   text-align: center;
+  align-items: center;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 25px;
@@ -142,13 +143,21 @@
   }
 }
 
+.content-page--inner-wrapper select {
+  max-width: 150px;
+  height: 50px;
+  @media (max-width: 500px) {
+    height: 30px;
+  }
+}
+
 .content-page--inner-wrapper input[type='radio']{
   width: 2em;
   margin-bottom: 2px;
 }
 
 .content-page--inner-wrapper div.radio {
-  width:50%;
+  width: 60%;
   display: flex;
   justify-content: space-around;
   @media (max-width: 500px) {
@@ -172,14 +181,32 @@
 }
 
 .content-page--inner-wrapper div.metric-si {
-  width: 50%;
+  width: 60%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
-.content-page--inner-wrapper div.metric-si input {
+.content-page--inner-wrapper div.metric-si div {
+  width: 50%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+}
+
+.content-page--inner-wrapper div.metric-si div select {
   width: 100%;
+}
+
+.content-page--inner-wrapper div.metric-si div label {
+  width:min-content;
+  padding: 0 0 0 5px;
+  @media (max-width: 500px) {
+    padding: 0;
+  }
 }
 
 .content-page--inner-wrapper div.submit-btn{
@@ -220,7 +247,7 @@
 
 /* CSS */
 .content-page--inner-wrapper input[type='submit']{
-  width: 50%;
+  width: 60%;
   font-size: 1em;
   background-color: #EA4C89;
   border-radius: 8px;
