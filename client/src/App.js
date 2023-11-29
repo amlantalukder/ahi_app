@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [data, setData] = useState({ sex: "M", age: "", weight: "", weight_lb: "", height: "", height_ft: "2", height_in: "0", initialo2: "", initialhr: "", initialrr: "" });
+  const [data, setData] = useState({ sex: "M", age: "", weight: "", weight_lb: "", height: "", height_ft: "", height_in: "", initialo2: "", initialhr: "", initialrr: "" });
   const [metric, setMetric] = useState("IMPERIAL");
   const [ahi_level, setAHILevel] = useState(-1);
   const [status_text, setStatus] = useState("");
@@ -221,6 +221,7 @@ function App() {
                               <div className="metric-si">
                                 <div className="metric-si-comp">
                                 <select name={"height_ft"} onChange={onChange} defaultValue={data["height_ft"]}>
+                                <option value=""></option>
                                 {predictors_unit_based[metric]["height_ft"][1].map((i) => {
                                   return <option value={i}>{i}</option>
                                 })}
@@ -229,6 +230,7 @@ function App() {
                                 </div>
                                 <div className="metric-si-comp">
                                 <select name={"height_in"} onChange={onChange} defaultValue={data["height_in"]}>
+                                <option value=""></option>
                                 {predictors_unit_based[metric]["height_in"][1].map((i) => {
                                   return <option value={i}>{i}</option>
                                 })}
