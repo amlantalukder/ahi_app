@@ -10,7 +10,7 @@ import joblib
 from tqdm import tqdm
 from xgboost import XGBClassifier
 
-app = Flask(__name__, static_folder='client/build', static_url_path='')
+app = Flask(__name__, static_folder='web_app/build', static_url_path='')
 CORS(app)
 
 log_path = os.path.join(os.path.dirname(__file__), 'server.log')
