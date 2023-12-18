@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "osa-app-407216",
+  "private_key_id": "24821a62ca329339bbe253007f2f76343c25de38",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCs4xFfUADhtNAV\nMGfrWT1la0vlOE+ocjc9I3FVQK0/4AFOSBRf4rV7FQq98jEJvwLpuN+ChWZH6Jfh\nM9ZitlmsU/vgCZq9fvQRWS6DkWOkCUAJMgoMBAdqmKu5jZfrukTRoJFrZfMBwKDD\nQILtJgLDG7J64wzxKh834NoqffeafwUDID8GMpJMmyA+/3emiX/oPIPRxJkyiQTh\nAUakU0hzMpd9RH+P3bZ1Hn9c7ggrNNn/Z43k94xFF2DD0N8Vk3WMS5rddr9Gju3S\ncoiTDXF0A5ED3zF9mjrk5eLgqEEGzW/GNpgIpGPqWew+RGJGj8gU9rhMY6mCKCeS\nhoVEGieNAgMBAAECggEAOymdOUuscZCpoIanGT+5peo416EUiWVEh/SIBQ+T+gbT\nC5HY/xMa3ZrOyT+HDnnCKm8sdYLnBHaQ+uz9UVxrhXBcAkfnHy/Bn+ov47AuM+VC\nd6MbEw+R5iWGpoHQ2kcs47uZ5/HEXfYoTYjXBQZ77X6d7jWiqSir9DhLED15LPH4\nmc/yINZ2P4+A657wUDFbSgAAPQN+4+pCKDdpSg+EdaB35Cu3uY0zf6N4gW8Qfbcd\ndMbTfEkxBbDBXz3BGUyDpkfX8Qnz+S9UBo5yARYgqqzts/aLjmHe5fX/I6ENmNKX\ndCVlrkJtFMXHwhjW+oBFAnZZ1M1t/0urNSBKUxyIVQKBgQDZX4cQWbq5t7w6wX8L\nA2Mkr41l8Vymq6Do5fiYh85CZF+HqrzK6ALGvLKymVsob/vEjwAtyVESskYJHw+e\nWIy2B7ZptdrQupHdHTRkGgaxfjgy7S0ZIvF5u0LErGaRyhilchCvG1nWMosdVd9C\nR9vU+cws8CdUuSu/+NewC2BbKwKBgQDLm9R+jpmqyPiBe9BaBKube5U8kiNBDmMr\n6/LNtrC2sGbmigQpnsUWf5NflRYK2+h4awwK4jzLBQCtyoxC7e6MnyDFEbd5wqOj\npAkF3/91ZpyS6urDhSPn30hEL3uld6xIfPsGwftx7pyoKtV1EM3SOR1SmqYdUtud\nmEAapFLMJwKBgBn7AfChWOEDpdq778xILlxfIx5RF8rP7p6HhgvtB2kGCCj17jSu\nQE6ylQUlsTCHGednVBUk36zFY/uJG9vIJ6FGELZXxvx1oCN2byGbvrsOI/dqQ56i\nf4wWJqfNF0FLj2CO3pGfSkCAsAHklpeccRjmdlHUrk7BBwqd2mGvKmgbAoGAcE9W\nmTCjhtcwbIwVU3I8DpnOqgiaNapv/aw61Eovk7YeLJB411RitpRMgG7GJ9tBkhrK\nG77LddkelL6jO8/uw9aKxumM4TcB+KPk7j6utN2TBF9ce9kXAzHgtOvUMmOevqVh\n+kpKHoBWHVTzRY2tWoZyrDvt4ULxLS7sPUXi/gUCgYBpKk7wukXr3XEkOogmYYbN\nX3m2h049kCakR17zg1TkR7yR4CKCoqEsm22rPjt9PGaYIC+2F31fxB/H1HTW21PZ\nvwp3/XMD3RawvOpNvbKvZjSmMlIzI5dhc+Y2TigOjIdV+ILWnyFYoaxJHMKy5T4G\nfuWj4+tcsPBfPHE2umP44g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "play-console-service-account@osa-app-407216.iam.gserviceaccount.com",
+  "client_id": "109007906755383598660",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/play-console-service-account%40osa-app-407216.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

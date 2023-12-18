@@ -49,7 +49,7 @@ def lprint(*args):
 # ---------------------------------------------------------------
 def loadModels():
     global models, le, ss
-    model_files = glob.glob(f'{dir_server}/models/model_monte_carlo_*.json')
+    model_files = glob.glob(f'{dir_server}/models/model_monte_carlo_*.json')[:2]
     c = 0
     for f in tqdm(model_files):
         

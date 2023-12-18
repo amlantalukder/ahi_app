@@ -1,22 +1,35 @@
 import "./App.css";
 import { useState } from "react";
+import { IoClose } from "react-icons/io5";
 
 function App() {
-  const [data, setData] = useState({ sex: "M", age: "", weight: "", weight_lb: "", height: "", height_ft: "", height_in: "", initialo2: "", initialhr: "", initialrr: "" });
+  const [data, setData] = useState({
+    sex: "M",
+    age: "",
+    weight: "",
+    weight_lb: "",
+    height: "",
+    height_ft: "",
+    height_in: "",
+    initialo2: "",
+    initialhr: "",
+    initialrr: "",
+  });
   const [metric, setMetric] = useState("IMPERIAL");
   const [ahi_level, setAHILevel] = useState(-1);
   const [status_text, setStatus] = useState("");
+  const [agreement, setAgreement] = useState(false);
   const [styles, setStyles] = useState({ results: "none" });
   const predictors = [
-    ["sex", "Sex", [0, 1], ],
-    ["age", "Age (Years)", [0, 120], "13 up"],
+    ["sex", "Sex", [0, 1]],
+    ["age", "Age (Years)", [13, 120], "13 up"],
     ["initialo2", "O2 (%)", [90, 100], "e.g., 98"],
     ["initialhr", "Heart Rate (bpm)", [40, 150], "e.g., 70"],
     ["initialrr", "Respiratory Rate (bpm)", [5, 50], "e.g., 16"],
   ];
 
   const predictors_unit_based = {
-    METRIC: { weight: ["Weight (kg)", [3, 300], "e.g., 70"], height: ["Height (cm)", [30, 300], "e.g. 180"]},
+    METRIC: { weight: ["Weight (kg)", [3, 300], "e.g., 70"], height: ["Height (cm)", [30, 300], "e.g. 180"] },
     IMPERIAL: {
       weight_lb: ["Weight (lb)", [8, 700], "e.g. 150"],
       height_ft: ["Height", [2, 3, 4, 5, 6, 7]],
@@ -25,6 +38,11 @@ function App() {
   };
 
   const validate = () => {
+    if (!agreement) {
+      setStatus("Please agree with the disclaimer to proceed with the result");
+      return false;
+    }
+
     console.log(data);
     for (let i in predictors) {
       let [name, title, [min, max]] = predictors[i];
@@ -53,6 +71,7 @@ function App() {
         return false;
       }
     }
+
     return true;
   };
 
@@ -220,22 +239,22 @@ function App() {
                               <label>{predictors_unit_based[metric]["height_ft"][0]}:</label>
                               <div className="metric-si">
                                 <div className="metric-si-comp">
-                                <select name={"height_ft"} onChange={onChange} defaultValue={data["height_ft"]}>
-                                <option value=""></option>
-                                {predictors_unit_based[metric]["height_ft"][1].map((i) => {
-                                  return <option value={i}>{i}</option>
-                                })}
-                                </select>
-                                <label>(ft)</label>
+                                  <select name={"height_ft"} onChange={onChange} defaultValue={data["height_ft"]}>
+                                    <option value=""></option>
+                                    {predictors_unit_based[metric]["height_ft"][1].map((i) => {
+                                      return <option value={i}>{i}</option>;
+                                    })}
+                                  </select>
+                                  <label>(ft)</label>
                                 </div>
                                 <div className="metric-si-comp">
-                                <select name={"height_in"} onChange={onChange} defaultValue={data["height_in"]}>
-                                <option value=""></option>
-                                {predictors_unit_based[metric]["height_in"][1].map((i) => {
-                                  return <option value={i}>{i}</option>
-                                })}
-                                </select>
-                                <label>(in)</label>
+                                  <select name={"height_in"} onChange={onChange} defaultValue={data["height_in"]}>
+                                    <option value=""></option>
+                                    {predictors_unit_based[metric]["height_in"][1].map((i) => {
+                                      return <option value={i}>{i}</option>;
+                                    })}
+                                  </select>
+                                  <label>(in)</label>
                                 </div>
                               </div>
                             </div>
@@ -247,8 +266,22 @@ function App() {
                 )
               );
             })}
+            <div className="agreement">
+              <input
+                type="checkbox"
+                id="agreement"
+                name="agreement"
+                onChange={() => {
+                  setAgreement(!agreement);
+                }}
+              ></input>
+              <span>
+                You agree that this is a model prediction, not a clinical diagnosis and only your health care provider can diagnose you whether you have moderate to severe sleep
+                apnea or not.
+              </span>
+            </div>
             <div className="submit-btn">
-              <input type="submit" value="Predict my OSA risk" />
+              <input type="submit" value="Predict my OSA risk" disabled={!agreement} />
             </div>
           </div>
         </form>
@@ -257,29 +290,41 @@ function App() {
       <div id="results" className="results" style={{ display: styles["results"] }}>
         <div className="heading">
           <strong>OSA Prediction</strong>
-          <a href="#" className="close" onClick={hideResults} />
+          <IoClose className="close" onClick={hideResults} />
         </div>
         {ahi_level > 0 && (
           <div className="predictions">
-            <p>
-              You are predicted to have a <strong>{ahi_level > 0.5 ? "higher" : "Lower"}</strong> risk for moderate to severe sleep apnea
-            </p>
             <div className="disclaimer">
+              <strong>Agreement</strong>
               <p>
-                <strong>Disclaimer and terms to use:</strong>
+                You agree that this is a screening tool/prediction, not a clinical test nor a diagnosis. Only your health care provider can diagnose you on whether you have
+                moderate to severe sleep apnea.
               </p>
+            </div>
+            <div className="main-result">
+              <strong>Result</strong>
               <p>
-                This model predicts that you are <strong>{ahi_level > 0.5 ? "" : "not "}</strong>at higher risk for obstructive sleep apnea.
+                {ahi_level > 0.5 ? (
+                  <>
+                    You are predicted to have a <strong>high</strong> risk for moderate to severe sleep apnea. It is recommended that you discuss this prediction with your health
+                    care provider.
+                  </>
+                ) : (
+                  <>
+                    You are predicted to have a <strong>low</strong> risk for moderate to severe sleep apnea.
+                  </>
+                )}
               </p>
-              <p>
-                A user must agree that this is a prediction, not a clinical diagnosis. Only your health care provider can diagnose you whether you have obstructive sleep apnea or
-                not.
-              </p>
-              <p>You may discuss with your health care provider about this prediction result. You and your health care provider can choose to ignore this result.</p>
-              <p>
-                The tool has an average accuracy of 71.8% predicting if a person has a moderate to severe sleep apnea (AHI &gt; 15) and an average accuracy of 63.2% if a person
-                does not have a moderate to severe sleep apnea (AHI &le; 15). Neither accuracy is 100%. Many other factors such as comorbidities are not included in the model.
-              </p>
+            </div>
+            <div className="disclaimer">
+              <strong>Disclaimer</strong>
+              <ol>
+                <li>This web server does not predict whether you have central or mixed sleep apnea.</li>
+                <li>
+                  The tool has an average accuracy of 71.8% predicting if a person has a moderate to severe sleep apnea (AHI &gt; 15) and an average accuracy of 63.2% if a person
+                  does not have a moderate to severe sleep apnea (AHI &le; 15). Neither accuracy is at 100%. Many other factors such as comorbidities are not included in the model.
+                </li>
+              </ol>
             </div>
           </div>
         )}

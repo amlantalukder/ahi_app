@@ -2,6 +2,7 @@
 
 # dependencies
 web_app/node_modules
+mobile_app/node_modules
 /.pnp
 .pnp.js
 
