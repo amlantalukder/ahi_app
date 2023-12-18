@@ -96,11 +96,6 @@
   }
 }
 
-.content-page--inner-wrapper input[type='radio']{
-  width: 2em;
-  margin-bottom: 2px;
-}
-
 .content-page--inner-wrapper div.radio {
   width: 50%;
   display: flex;
@@ -113,6 +108,11 @@
 .content-page--inner-wrapper div.radio div{
   width: 100px;
   display: flex;
+}
+
+.content-page--inner-wrapper input[type='radio']{
+  width: 2em;
+  margin-bottom: 2px;
 }
 
 .content-page--inner-wrapper div.radio label{
@@ -176,6 +176,7 @@
 }
 
 .content-page--inner-wrapper div.agreement input[type='checkbox']{
+  cursor: pointer;
   width: 50px;
   height: 50px;
   @media (max-width: 500px) {
@@ -221,28 +222,8 @@
   }
 }
 
-.content-page--inner-wrapper input[type='submit']:hover {
+.content-page--inner-wrapper input[type='submit']:hover, input[type='submit']:disabled {
   background-color: #F082AC;
-}
-
-.content-page--inner-wrapper input[type='submit']:disabled {
-  background-color: #e7becd;
-}
-
-.content-page--inner-wrapper div.result-container, div.result-conf-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.content-page--inner-wrapper div.result, div.result-conf{
-  font-weight: bold;
-  width: 50%;
-  text-align: center;
-}
-
-.content-page--inner-wrapper div.predictors, div.predictions{
-  border: 1px solid black;  
 }
 
 .content-page--inner-wrapper div.error {
@@ -251,6 +232,10 @@
   font-size: 0.8em;
   padding: 5px;
   color: #ef0707;
+}
+
+.content-page--inner-wrapper div.predictors, div.predictions{
+  border: 1px solid black;  
 }
 
 .content-page--inner-wrapper div.results {
@@ -288,6 +273,7 @@
   font-size: 0.9em;
   margin-bottom: 0px;
   padding: 10px 0;
+  text-align: justify;
   @media (max-width: 500px) {
     padding: 5px 0;
   }
@@ -296,11 +282,11 @@
   font-size: 0.9em;
   margin-bottom: 0px;
   padding: 10px 0 10px 20px;
+  text-align: justify;
   @media (max-width: 500px) {
     padding: 5px 0 5px 15px;
   }
-  list-style:decimal;
-  text-align: justify;
+  list-style: decimal;
 }
 
 .content-page--inner-wrapper div.disclaimer ol li {
@@ -311,6 +297,7 @@
   font-size: 1em;
   margin-bottom: 0px;
   padding: 10px 0 15px 0;
+  text-align: justify;
   @media (max-width: 500px) {
     padding: 5px 0 10px 0;
   }

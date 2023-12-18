@@ -297,7 +297,7 @@ function App() {
             <div className="disclaimer">
               <strong>Agreement</strong>
               <p>
-                You agree that this is a screening tool/prediction, not a clinical test nor a diagnosis. Only your health care provider can diagnose you on whether you have
+                You have agreed that this is a screening tool/prediction, not a clinical test nor a diagnosis. Only your health care provider can diagnose you on whether you have
                 moderate to severe sleep apnea.
               </p>
             </div>
@@ -306,12 +306,12 @@ function App() {
               <p>
                 {ahi_level > 0.5 ? (
                   <>
-                    You are predicted to have a <strong>high</strong> risk for moderate to severe sleep apnea. It is recommended that you discuss this prediction with your health
-                    care provider.
+                    You have been predicted to have a <strong>high</strong> risk for moderate to severe sleep apnea. It is recommended that you discuss this prediction with your
+                    health care provider.
                   </>
                 ) : (
                   <>
-                    You are predicted to have a <strong>low</strong> risk for moderate to severe sleep apnea.
+                    You have been predicted to have a <strong>low</strong> risk for moderate to severe sleep apnea.
                   </>
                 )}
               </p>
