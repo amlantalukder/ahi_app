@@ -1,13 +1,27 @@
-.content-page--inner-wrapper{
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  line-height: 1em;
-  font-size: 1.3em;
+:root {
+  --size-font-heading: 20px;
+  --size-font-label: 22px;
+  --size-font-input: 22px;
+  --size-font-button: 22px;
+  --size-font-para: 18px;
   @media (max-width: 500px) {
-    font-size: 0.8em;
-    line-height: 1.1em;
+    --size-font-heading: 12px;
+    --size-font-label: 13px;
+    --size-font-input: 13px;
+    --size-font-button: 13px;
+    --size-font-para: 11px;
   }
+}
+
+.content-page--inner-wrapper{
+  font: inherit;
+  line-height: 1.1em;
+  font-size: var(--size-font-heading);
   display: flex;
   justify-content: center;
+  @media (max-width: 500px) {
+    line-height: 1em;
+  }
 }
 
 .content-page--inner-wrapper .App {
@@ -57,13 +71,13 @@
 .content-page--inner-wrapper div.predictors {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 10px;
+  gap: 5px;
+  padding: 5px;
   border-top-left-radius: 2%;
   border-top-right-radius: 2%;
   @media (max-width: 500px) {
-    gap: 5px;
-    padding: 5px;
+    gap: 2px;
+    padding: 2px;
   } 
 }
 
@@ -74,6 +88,7 @@
 }
 
 .content-page--inner-wrapper label{
+  font-size: var(--size-font-label);
   width: 50%;
   text-align: right;
   padding-right: 10px;
@@ -81,38 +96,49 @@
 
 .content-page--inner-wrapper input[type='number'], select{
   width: 50%;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 1.1em;
+  font: inherit;
+  font-size: var(--size-font-input);
   text-align: center;
-  padding: 5px 10px 10px 10px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 25px;
   box-sizing: border-box;
   color: #2C3E50;
 
   @media (max-width: 500px) {
-    font-size: 1em;
     padding: 5px;
   }
+}
+
+.content-page--inner-wrapper select{
+  padding: 8px;
 }
 
 .content-page--inner-wrapper div.radio {
   width: 50%;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px;
   @media (max-width: 500px) {
     flex-direction: column;
+    gap: 2px;
+    padding: 2px;
   }
 }
 
 .content-page--inner-wrapper div.radio div{
-  width: 100px;
   display: flex;
 }
 
 .content-page--inner-wrapper input[type='radio']{
-  width: 2em;
   margin-bottom: 2px;
+  width: 25px;
+  height: 25px;
+  @media (max-width: 500px) {
+    width: 15px;
+    height: 15px;
+  }
 }
 
 .content-page--inner-wrapper div.radio label{
@@ -128,6 +154,10 @@
   border-radius: 10px;
   gap: 5px;
   padding: 5px;
+  @media (max-width: 500px) {
+    gap: 2px;
+    padding: 2px;
+  }
 }
 
 .content-page--inner-wrapper div.metric-si {
@@ -164,7 +194,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
-  font-size: 0.8em;
+  font-size: var(--size-font-para);
   color: white;
   padding: 10px;
   border: 1px solid white;
@@ -193,7 +223,7 @@
 
 .content-page--inner-wrapper input[type='submit']{
   width: 50%;
-  font-size: 1em;
+  font-size: var(--size-font-button);
   background-color: #EA4C89;
   border-radius: 8px;
   border-style: none;
@@ -201,7 +231,7 @@
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: inherit;
   font-weight: 500;
   padding: 10px 0;
   line-height: 20px;
@@ -217,7 +247,6 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   @media (max-width: 500px) {
-    font-size: 0.8em;
     padding: 5px 0;
   }
 }
@@ -229,7 +258,7 @@
 .content-page--inner-wrapper div.error {
   display: flex;
   justify-content: center;
-  font-size: 0.8em;
+  font-size: var(--size-font-para);
   padding: 5px;
   color: #ef0707;
 }
@@ -250,7 +279,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5;
-  font-size: 0.9em;
+  font-size: var(--size-font-heading);
 }
 
 .content-page--inner-wrapper div.predictions{
@@ -270,7 +299,7 @@
 }
 
 .content-page--inner-wrapper div.disclaimer p{
-  font-size: 0.9em;
+  font-size: var(--size-font-para);
   margin-bottom: 0px;
   padding: 10px 0;
   text-align: justify;
@@ -279,7 +308,7 @@
   }
 }
 .content-page--inner-wrapper div.disclaimer ol{
-  font-size: 0.9em;
+  font-size: var(--size-font-para);
   margin-bottom: 0px;
   padding: 10px 0 10px 20px;
   text-align: justify;
@@ -294,7 +323,7 @@
 }
 
 .content-page--inner-wrapper div.main-result p{
-  font-size: 1em;
+  font-size: var(--size-font-heading);
   margin-bottom: 0px;
   padding: 10px 0 15px 0;
   text-align: justify;

@@ -322,7 +322,8 @@ function App() {
                 <li>This web server does not predict whether you have central or mixed sleep apnea.</li>
                 <li>
                   The tool has an average accuracy of 71.8% predicting if a person has a moderate to severe sleep apnea (AHI &gt; 15) and an average accuracy of 63.2% if a person
-                  does not have a moderate to severe sleep apnea (AHI &le; 15). Neither accuracy is at 100%. Many other factors such as comorbidities are not included in the model.
+                  does not have a moderate to severe sleep apnea (AHI &le; 15). Neither of the accuracies is at 100%. Many other factors such as comorbidities are not included in
+                  the model.
                 </li>
               </ol>
             </div>
