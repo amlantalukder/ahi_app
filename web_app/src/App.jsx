@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { IoClose } from "react-icons/io5";
+import { IoMdCloseCircle } from "react-icons/io";
 
 function App() {
   const [data, setData] = useState({
@@ -290,19 +290,11 @@ function App() {
       <div id="results" className="results" style={{ display: styles["results"] }}>
         <div className="heading">
           <strong>OSA Prediction</strong>
-          <IoClose className="close" onClick={hideResults} />
+          <IoMdCloseCircle className="close" onClick={hideResults} />
         </div>
         {ahi_level > 0 && (
           <div className="predictions">
-            <div className="disclaimer">
-              <strong>Agreement</strong>
-              <p>
-                You have agreed that this is a screening tool/prediction, not a clinical test nor a diagnosis. Only your health care provider can diagnose you on whether you have
-                moderate to severe sleep apnea.
-              </p>
-            </div>
             <div className="main-result">
-              <strong>Result</strong>
               <p>
                 {ahi_level > 0.5 ? (
                   <>
@@ -314,6 +306,13 @@ function App() {
                     You have been predicted to have a <strong>low</strong> risk for moderate to severe sleep apnea.
                   </>
                 )}
+              </p>
+            </div>
+            <div className="disclaimer">
+              <strong>Agreement</strong>
+              <p>
+                You have agreed that this is a screening tool/prediction, not a clinical test nor a diagnosis. Only your health care provider can diagnose you on whether you have
+                moderate to severe sleep apnea.
               </p>
             </div>
             <div className="disclaimer">

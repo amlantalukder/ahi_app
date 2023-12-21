@@ -1,100 +1,111 @@
 :root {
+  --color-border: white;
   --size-font-heading: 20px;
   --size-font-label: 22px;
   --size-font-input: 22px;
   --size-font-button: 22px;
   --size-font-para: 18px;
-  @media (max-width: 500px) {
+  --size-font-mini: 14px;
+}
+@media (max-width: 500px) {
+  :root {
     --size-font-heading: 12px;
     --size-font-label: 13px;
     --size-font-input: 13px;
     --size-font-button: 13px;
     --size-font-para: 11px;
+    --size-font-mini: 10px;
   }
 }
 
-.content-page--inner-wrapper{
+.content-page--inner-wrapper {
+  display: flex;
+  justify-content: center;
   font: inherit;
   line-height: 1.1em;
   font-size: var(--size-font-heading);
-  display: flex;
-  justify-content: center;
-  @media (max-width: 500px) {
+  color: white;
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper {
     line-height: 1em;
   }
 }
-
 .content-page--inner-wrapper .App {
+  display: flex;
   max-width: 1200px;
   width: 100%;
   height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding-top: 10px;
 }
-
-.content-page--inner-wrapper div.bg-image {
-  background-image: url('../public/bg.jpg');
+.content-page--inner-wrapper .App div.bg-image {
+  background-image: url("../public/bg.jpg");
   /* Add the blur effect */
   filter: blur(15px);
   -webkit-filter: blur(15px);
-
   /* Full height */
   width: 100%;
   height: 100%;
-
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.content-page--inner-wrapper div.container{
+.content-page--inner-wrapper .App div.container {
   width: 90%;
   max-width: 800px;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-  background-image: linear-gradient(to bottom, #ebcaca, rgb(127 137 197));
+  /*background-image: linear-gradient(to bottom, #ebcaca, rgb(127 137 197));*/
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-
-  @media (max-width: 500px) {
+  background: rgba(112, 122, 199, 0.89);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.9px);
+  -webkit-backdrop-filter: blur(2.9px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.container {
     padding: 15px;
   }
 }
-
-.content-page--inner-wrapper div.predictors {
+.content-page--inner-wrapper .App div.predictors {
   display: flex;
   flex-direction: column;
   gap: 5px;
   padding: 5px;
   border-top-left-radius: 2%;
   border-top-right-radius: 2%;
-  @media (max-width: 500px) {
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.predictors {
     gap: 2px;
     padding: 2px;
-  } 
+  }
 }
-
-.content-page--inner-wrapper div.predictor, .submit-btn, .result-container{
+.content-page--inner-wrapper .App div.predictors, .content-page--inner-wrapper .App div.predictions {
+  border: 1px solid var(--color-border);
+}
+.content-page--inner-wrapper .App div.predictor, .content-page--inner-wrapper .App .submit-btn {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
-
-.content-page--inner-wrapper label{
+.content-page--inner-wrapper .App label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   font-size: var(--size-font-label);
   width: 50%;
   text-align: right;
   padding-right: 10px;
 }
-
-.content-page--inner-wrapper input[type='number'], select{
+.content-page--inner-wrapper .App input[type=number], .content-page--inner-wrapper .App select {
   width: 50%;
   font: inherit;
   font-size: var(--size-font-input);
@@ -104,124 +115,127 @@
   border-radius: 25px;
   box-sizing: border-box;
   color: #2C3E50;
-
-  @media (max-width: 500px) {
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App input[type=number], .content-page--inner-wrapper .App select {
     padding: 5px;
   }
 }
-
-.content-page--inner-wrapper select{
+.content-page--inner-wrapper .App select {
   padding: 8px;
 }
-
-.content-page--inner-wrapper div.radio {
+.content-page--inner-wrapper .App div.radio {
   width: 50%;
   display: flex;
   justify-content: flex-start;
   gap: 10px;
   padding: 10px;
-  @media (max-width: 500px) {
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.radio {
     flex-direction: column;
     gap: 2px;
     padding: 2px;
   }
 }
-
-.content-page--inner-wrapper div.radio div{
+.content-page--inner-wrapper .App div.radio div {
   display: flex;
 }
-
-.content-page--inner-wrapper input[type='radio']{
+.content-page--inner-wrapper .App div.radio input[type=radio] {
   margin-bottom: 2px;
   width: 25px;
   height: 25px;
-  @media (max-width: 500px) {
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.radio input[type=radio] {
     width: 15px;
     height: 15px;
   }
 }
-
-.content-page--inner-wrapper div.radio label{
+.content-page--inner-wrapper .App div.radio label {
   display: flex;
-  text-align: left;
   align-items: center;
+  justify-content: flex-start;
+  text-align: left;
 }
-
-.content-page--inner-wrapper div.fieldset {
+.content-page--inner-wrapper .App div.fieldset {
   display: flex;
   flex-direction: column;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   gap: 5px;
   padding: 5px;
-  @media (max-width: 500px) {
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.fieldset {
     gap: 2px;
     padding: 2px;
   }
 }
-
-.content-page--inner-wrapper div.metric-si {
+.content-page--inner-wrapper .App div.metric-si {
   width: 50%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
-
-.content-page--inner-wrapper div.metric-si div {
+.content-page--inner-wrapper .App div.metric-si div {
   width: 49%;
   display: flex;
-  justify-content: left;
   align-items: center;
-  @media (max-width: 500px) {
+  justify-content: flex-start;
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.metric-si div {
     flex-direction: column;
   }
 }
-
-.content-page--inner-wrapper div.metric-si div select {
+.content-page--inner-wrapper .App div.metric-si div select {
   width: 100%;
 }
-
-.content-page--inner-wrapper div.metric-si div label {
-  width:min-content;
+.content-page--inner-wrapper .App div.metric-si div label {
+  width: -moz-min-content;
+  width: min-content;
   padding: 0 0 0 5px;
-  @media (max-width: 500px) {
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.metric-si div label {
     padding: 0;
   }
 }
-
-.content-page--inner-wrapper div.agreement {
+.content-page--inner-wrapper .App div.agreement {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
   gap: 10px;
   font-size: var(--size-font-para);
-  color: white;
+  margin: 10px 0;
   padding: 10px;
-  border: 1px solid white;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   text-align: justify;
-  @media (max-width: 500px) {
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.agreement {
     padding: 5px 10px;
   }
 }
-
-.content-page--inner-wrapper div.agreement input[type='checkbox']{
+.content-page--inner-wrapper .App div.agreement input[type=checkbox] {
   cursor: pointer;
   width: 50px;
   height: 50px;
-  @media (max-width: 500px) {
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.agreement input[type=checkbox] {
     width: 20px;
     height: 20px;
   }
 }
-
-.content-page--inner-wrapper div.submit-btn{
+.content-page--inner-wrapper .App div.submit-btn {
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: flex-end;
 }
-
-.content-page--inner-wrapper input[type='submit']{
+.content-page--inner-wrapper .App div.submit-btn input[type=submit] {
   width: 50%;
   font-size: var(--size-font-button);
   background-color: #EA4C89;
@@ -243,46 +257,69 @@
   text-decoration: none;
   transition: color 100ms;
   vertical-align: baseline;
-  user-select: none;
+  -moz-user-select: none;
+       user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  @media (max-width: 500px) {
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.submit-btn input[type=submit] {
     padding: 5px 0;
   }
 }
-
-.content-page--inner-wrapper input[type='submit']:hover, input[type='submit']:disabled {
+.content-page--inner-wrapper .App div.submit-btn input[type=submit]:hover, .content-page--inner-wrapper .App div.submit-btn input[type=submit]:disabled {
   background-color: #F082AC;
 }
-
-.content-page--inner-wrapper div.error {
+.content-page--inner-wrapper .App div.error {
   display: flex;
+  align-items: center;
   justify-content: center;
   font-size: var(--size-font-para);
   padding: 5px;
-  color: #ef0707;
 }
-
-.content-page--inner-wrapper div.predictors, div.predictions{
-  border: 1px solid black;  
-}
-
-.content-page--inner-wrapper div.results {
+.content-page--inner-wrapper .App div.results {
   width: 80%;
   max-width: 800px;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-  background-image: linear-gradient(to bottom, #f4f3f0, rgb(246, 238, 212));
+  /*background-image: linear-gradient(to bottom, #f4f3f0, rgb(246, 238, 212));*/
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5;
   font-size: var(--size-font-heading);
+  background: rgba(154, 112, 199, 0.89);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.9px);
+  -webkit-backdrop-filter: blur(2.9px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
-
-.content-page--inner-wrapper div.predictions{
+.content-page--inner-wrapper .App div.results div.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 10px 0;
+}
+.content-page--inner-wrapper .App div.results div.heading .close {
+  width: 30px;
+  height: 30px;
+  opacity: 0.5;
+  cursor: pointer;
+  opacity: 100%;
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.results div.heading .close {
+    width: 20px;
+    height: 20px;
+  }
+}
+.content-page--inner-wrapper .App div.results div.heading .close:hover {
+  opacity: 1;
+}
+.content-page--inner-wrapper .App div.predictions {
   padding: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -290,58 +327,41 @@
   flex-direction: column;
   gap: 10px;
 }
-
-.content-page--inner-wrapper div.results div.heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 0 10px 0;
+.content-page--inner-wrapper .App div.disclaimer {
+  font-size: var(--size-font-mini);
 }
-
-.content-page--inner-wrapper div.disclaimer p{
-  font-size: var(--size-font-para);
+.content-page--inner-wrapper .App div.disclaimer p {
   margin-bottom: 0px;
   padding: 10px 0;
   text-align: justify;
-  @media (max-width: 500px) {
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.disclaimer p {
     padding: 5px 0;
   }
 }
-.content-page--inner-wrapper div.disclaimer ol{
-  font-size: var(--size-font-para);
+.content-page--inner-wrapper .App div.disclaimer ol {
   margin-bottom: 0px;
   padding: 10px 0 10px 20px;
   text-align: justify;
-  @media (max-width: 500px) {
-    padding: 5px 0 5px 15px;
-  }
   list-style: decimal;
 }
-
-.content-page--inner-wrapper div.disclaimer ol li {
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.disclaimer ol {
+    padding: 5px 0 5px 15px;
+  }
+}
+.content-page--inner-wrapper .App div.disclaimer ol li {
   padding-top: 5px;
 }
-
-.content-page--inner-wrapper div.main-result p{
+.content-page--inner-wrapper .App div.main-result p {
   font-size: var(--size-font-heading);
   margin-bottom: 0px;
   padding: 10px 0 15px 0;
   text-align: justify;
-  @media (max-width: 500px) {
+}
+@media (max-width: 500px) {
+  .content-page--inner-wrapper .App div.main-result p {
     padding: 5px 0 10px 0;
   }
-}
-
-.content-page--inner-wrapper .close {
-  width: 30px;
-  height: 30px;
-  opacity: 0.5;
-  cursor: pointer;
-  @media (max-width: 500px) {
-    width: 20px;
-    height: 20px;
-  }
-}
-.content-page--inner-wrapper .close:hover {
-  opacity: 1;
 }
