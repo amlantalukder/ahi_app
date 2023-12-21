@@ -121,6 +121,12 @@
     padding: 5px;
   }
 }
+.content-page--inner-wrapper .App input[type=number]::-moz-placeholder {
+  font-weight: 400;
+}
+.content-page--inner-wrapper .App input[type=number]::placeholder {
+  font-weight: 400;
+}
 .content-page--inner-wrapper .App select {
   padding: 8px;
 }
