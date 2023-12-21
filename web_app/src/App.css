@@ -22,6 +22,7 @@
   display: flex;
   justify-content: center;
   font: inherit;
+  font-weight: 600;
   line-height: 1.1em;
   font-size: var(--size-font-heading);
   color: white;
@@ -95,6 +96,7 @@
 .content-page--inner-wrapper .App div.predictor, .content-page--inner-wrapper .App .submit-btn {
   display: flex;
   justify-content: space-between;
+  padding: 2px 0;
 }
 .content-page--inner-wrapper .App label {
   display: flex;
@@ -135,13 +137,11 @@
   display: flex;
   justify-content: flex-start;
   gap: 10px;
-  padding: 10px;
 }
 @media (max-width: 500px) {
   .content-page--inner-wrapper .App div.radio {
     flex-direction: column;
     gap: 2px;
-    padding: 2px;
   }
 }
 .content-page--inner-wrapper .App div.radio div {
@@ -252,7 +252,7 @@
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 600;
   padding: 10px 0;
   line-height: 20px;
   list-style: none;
