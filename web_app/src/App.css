@@ -22,7 +22,6 @@
   justify-content: center;
   font: inherit;
   font-weight: 600;
-  line-height: 1.1em;
   font-size: var(--size-font-heading);
   color: white;
 }
@@ -95,7 +94,7 @@
 .content-page--inner-wrapper .App div.predictor, .content-page--inner-wrapper .App .submit-btn {
   display: flex;
   justify-content: space-between;
-  padding: 2px 0;
+  padding: 1px 0;
 }
 .content-page--inner-wrapper .App label {
   display: flex;
@@ -145,11 +144,12 @@
 }
 .content-page--inner-wrapper .App div.radio div {
   display: flex;
+  gap: 2px;
 }
 .content-page--inner-wrapper .App div.radio input[type=radio] {
-  margin-bottom: 2px;
-  width: 25px;
-  height: 25px;
+  margin: 0;
+  width: var(--size-font-input);
+  height: var(--size-font-input);
 }
 @media (max-width: 500px) {
   .content-page--inner-wrapper .App div.radio input[type=radio] {
