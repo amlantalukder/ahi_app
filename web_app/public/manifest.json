@@ -1,6 +1,6 @@
 {
   "short_name": "OSA Detector",
-  "name": "Predict AHI level for OSA detection",
+  "name": "Predict OSA severity level",
   "icons": [
     {
       "src": "favicon.ico",

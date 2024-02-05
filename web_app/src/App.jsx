@@ -114,7 +114,7 @@ function App() {
     console.log("Fetching...");
     setStatus("Fetching data from server...");
 
-    fetch("/ahi/api/", requestOptions)
+    fetch("/OSApredictor/api/", requestOptions)
       .then((response) => {
         console.log(response);
         if (response.ok) return response.json();
@@ -198,42 +198,18 @@ function App() {
                           <>
                             <div className="predictor">
                               <label>{predictors_unit_based[metric]["weight"][0]}:</label>
-                              <input
-                                type="number"
-                                name="weight"
-                                placeholder={predictors_unit_based[metric]["weight"][2]}
-                                value={data["weight"]}
-                                onChange={onChange}
-                                min={predictors_unit_based[metric]["weight"][1][0]}
-                                max={predictors_unit_based[metric]["weight"][1][1]}
-                              />
+                              <input type="number" name="weight" placeholder={predictors_unit_based[metric]["weight"][2]} value={data["weight"]} onChange={onChange} min={predictors_unit_based[metric]["weight"][1][0]} max={predictors_unit_based[metric]["weight"][1][1]} />
                             </div>
                             <div className="predictor">
                               <label>{predictors_unit_based[metric]["height"][0]}:</label>
-                              <input
-                                type="number"
-                                name="height"
-                                placeholder={predictors_unit_based[metric]["height"][2]}
-                                value={data["height"]}
-                                onChange={onChange}
-                                min={predictors_unit_based[metric]["height"][1][0]}
-                                max={predictors_unit_based[metric]["height"][1][1]}
-                              />
+                              <input type="number" name="height" placeholder={predictors_unit_based[metric]["height"][2]} value={data["height"]} onChange={onChange} min={predictors_unit_based[metric]["height"][1][0]} max={predictors_unit_based[metric]["height"][1][1]} />
                             </div>
                           </>
                         ) : (
                           <>
                             <div className="predictor">
                               <label>{predictors_unit_based[metric]["weight_lb"][0]}:</label>
-                              <input
-                                type="number"
-                                name="weight_lb"
-                                placeholder={predictors_unit_based[metric]["weight_lb"][2]}
-                                value={data["weight_lb"]}
-                                onChange={onChange}
-                                min={predictors_unit_based[metric]["weight_lb"][1][0]}
-                                max={predictors_unit_based[metric]["weight_lb"][1][1]}
-                              />
+                              <input type="number" name="weight_lb" placeholder={predictors_unit_based[metric]["weight_lb"][2]} value={data["weight_lb"]} onChange={onChange} min={predictors_unit_based[metric]["weight_lb"][1][0]} max={predictors_unit_based[metric]["weight_lb"][1][1]} />
                             </div>
                             <div className="predictor">
                               <label>{predictors_unit_based[metric]["height_ft"][0]}:</label>
@@ -275,10 +251,7 @@ function App() {
                   setAgreement(!agreement);
                 }}
               ></input>
-              <span>
-                You agree that this is a model prediction, not a clinical diagnosis and only your health care provider can diagnose you whether you have moderate to severe sleep
-                apnea or not.
-              </span>
+              <span>You agree that this is a model prediction, not a clinical diagnosis and only your health care provider can diagnose you whether you have moderate to severe sleep apnea or not.</span>
             </div>
             <div className="submit-btn">
               <input type="submit" value="Predict my OSA risk" disabled={!agreement} />
@@ -298,8 +271,7 @@ function App() {
               <p>
                 {ahi_level > 0.5 ? (
                   <>
-                    You have been predicted to have a <strong>high</strong> risk for moderate to severe sleep apnea. It is recommended that you discuss this prediction with your
-                    health care provider.
+                    You have been predicted to have a <strong>high</strong> risk for moderate to severe sleep apnea. It is recommended that you discuss this prediction with your health care provider.
                   </>
                 ) : (
                   <>
@@ -310,20 +282,13 @@ function App() {
             </div>
             <div className="disclaimer">
               <strong>Agreement</strong>
-              <p>
-                You have agreed that this is a screening tool/prediction, not a clinical test nor a diagnosis. Only your health care provider can diagnose you on whether you have
-                moderate to severe sleep apnea.
-              </p>
+              <p>You have agreed that this is a screening tool/prediction, not a clinical test nor a diagnosis. Only your health care provider can diagnose you on whether you have moderate to severe sleep apnea.</p>
             </div>
             <div className="disclaimer">
               <strong>Disclaimer</strong>
               <ol>
                 <li>This web server does not predict whether you have central or mixed sleep apnea.</li>
-                <li>
-                  The tool has an average accuracy of 71.8% predicting if a person has a moderate to severe sleep apnea (AHI &gt; 15) and an average accuracy of 63.2% if a person
-                  does not have a moderate to severe sleep apnea (AHI &le; 15). Neither of the accuracies is at 100%. Many other factors such as comorbidities are not included in
-                  the model.
-                </li>
+                <li>The tool has an average accuracy of 71.8% predicting if a person has a moderate to severe sleep apnea (AHI &gt; 15) and an average accuracy of 63.2% if a person does not have a moderate to severe sleep apnea (AHI &le; 15). Neither of the accuracies is at 100%. Many other factors such as comorbidities are not included in the model.</li>
               </ol>
             </div>
           </div>

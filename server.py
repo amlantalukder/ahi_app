@@ -35,7 +35,7 @@ class PrefixMiddleware(object):
             start_response('404', [('Content-Type', 'text/plain')])
             return ["This url does not belong to the app.".encode()]
         
-app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='/ahi')
+app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='/OSApredictor')
 
 dir_server = os.path.dirname(__file__)
 models = []
