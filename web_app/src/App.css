@@ -1,19 +1,17 @@
 :root {
-  --size-font-heading: 20px;
+  --size-font-heading: 22px;
   --size-font-label: 22px;
   --size-font-input: 22px;
   --size-font-button: 22px;
   --size-font-para: 18px;
-  --size-font-mini: 14px;
 }
 @media (max-width: 500px) {
   :root {
-    --size-font-heading: 12px;
+    --size-font-heading: 15px;
     --size-font-label: 13px;
     --size-font-input: 13px;
     --size-font-button: 13px;
     --size-font-para: 11px;
-    --size-font-mini: 10px;
   }
 }
 
@@ -22,6 +20,7 @@
   justify-content: center;
   font: inherit;
   font-weight: 600;
+  line-height: 1.1em;
   font-size: var(--size-font-heading);
   color: white;
 }
@@ -51,7 +50,7 @@
   background-size: cover;
 }
 .content-page--inner-wrapper .App div.container {
-  width: 90%;
+  width: 100%;
   max-width: 800px;
   padding: 20px;
   border-radius: 20px;
@@ -88,13 +87,15 @@
     padding: 2px;
   }
 }
-.content-page--inner-wrapper .App div.predictors, .content-page--inner-wrapper .App div.predictions {
+.content-page--inner-wrapper .App div.predictors,
+.content-page--inner-wrapper .App div.predictions {
   border: 1px solid rgb(241, 242, 251);
 }
-.content-page--inner-wrapper .App div.predictor, .content-page--inner-wrapper .App .submit-btn {
+.content-page--inner-wrapper .App div.predictor,
+.content-page--inner-wrapper .App .submit-btn {
   display: flex;
   justify-content: space-between;
-  padding: 1px 0;
+  padding: 2px 0;
 }
 .content-page--inner-wrapper .App label {
   display: flex;
@@ -105,7 +106,8 @@
   text-align: right;
   padding-right: 10px;
 }
-.content-page--inner-wrapper .App input[type=number], .content-page--inner-wrapper .App select {
+.content-page--inner-wrapper .App input[type=number],
+.content-page--inner-wrapper .App select {
   width: 50%;
   font: inherit;
   font-size: var(--size-font-input);
@@ -117,7 +119,8 @@
   color: #000000;
 }
 @media (max-width: 500px) {
-  .content-page--inner-wrapper .App input[type=number], .content-page--inner-wrapper .App select {
+  .content-page--inner-wrapper .App input[type=number],
+  .content-page--inner-wrapper .App select {
     padding: 5px;
   }
 }
@@ -147,9 +150,9 @@
   gap: 2px;
 }
 .content-page--inner-wrapper .App div.radio input[type=radio] {
-  margin: 0;
-  width: var(--size-font-input);
-  height: var(--size-font-input);
+  margin-bottom: 2px;
+  width: 25px;
+  height: 25px;
 }
 @media (max-width: 500px) {
   .content-page--inner-wrapper .App div.radio input[type=radio] {
@@ -162,6 +165,7 @@
   align-items: center;
   justify-content: flex-start;
   text-align: left;
+  margin-top: 2px;
 }
 .content-page--inner-wrapper .App div.fieldset {
   display: flex;
@@ -244,7 +248,7 @@
 .content-page--inner-wrapper .App div.submit-btn input[type=submit] {
   width: 50%;
   font-size: var(--size-font-button);
-  background-color: #EA4C89;
+  background-color: #ea4c89;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -291,7 +295,7 @@
   padding: 5px;
 }
 .content-page--inner-wrapper .App div.results {
-  width: 80%;
+  width: 100%;
   max-width: 800px;
   padding: 20px;
   border-radius: 20px;
@@ -341,7 +345,7 @@
   gap: 10px;
 }
 .content-page--inner-wrapper .App div.disclaimer {
-  font-size: var(--size-font-mini);
+  font-size: var(--size-font-para);
 }
 .content-page--inner-wrapper .App div.disclaimer p {
   margin-bottom: 0px;

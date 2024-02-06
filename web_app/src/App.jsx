@@ -22,17 +22,17 @@ function App() {
   const [styles, setStyles] = useState({ results: "none" });
   const predictors = [
     ["sex", "Sex", [0, 1]],
-    ["age", "Age (Years)", [13, 120], "13 up"],
+    ["age", "Age (Years)", [13, 100], "13 up"],
     ["initialo2", "O2 (%)", [90, 100], "e.g., 98"],
-    ["initialhr", "Heart Rate (bpm)", [40, 150], "e.g., 70"],
-    ["initialrr", "Respiratory Rate (bpm)", [5, 50], "e.g., 16"],
+    ["initialhr", "Heart Rate (bpm)", [40, 130], "e.g., 70"],
+    ["initialrr", "Respiratory Rate (bpm)", [6, 40], "e.g., 16"],
   ];
 
   const predictors_unit_based = {
-    METRIC: { weight: ["Weight (kg)", [3, 300], "e.g., 70"], height: ["Height (cm)", [30, 300], "e.g. 180"] },
+    METRIC: { weight: ["Weight (kg)", [22, 182], "e.g., 70"], height: ["Height (cm)", [90, 211], "e.g. 180"] },
     IMPERIAL: {
-      weight_lb: ["Weight (lb)", [8, 700], "e.g. 150"],
-      height_ft: ["Height", [2, 3, 4, 5, 6, 7]],
+      weight_lb: ["Weight (lb)", [50, 400], "e.g. 150"],
+      height_ft: ["Height", [3, 4, 5, 6]],
       height_in: ["Height", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]],
     },
   };

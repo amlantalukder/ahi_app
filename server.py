@@ -76,12 +76,12 @@ def predict(x):
 def validate(data):
 
     predictors = {"sex": ["Sex", 0, 1],
-                  "age": ["Age (Years)", 0, 120],
-                  "weight": ["Weight (kg)", 3, 300],
-                  "height": ["Height (cm)", 30, 300],
+                  "age": ["Age (Years)", 13, 100],
+                  "weight": ["Weight (kg)", 22, 182],
+                  "height": ["Height (cm)", 90, 211],
                   "initialo2": ["O2 (%)", 90, 100],
-                  "initialhr": ["Heart Rate (bpm)", 40, 150],
-                  "initialrr": ["Respiratory Rate (bpm)", 5, 50]
+                  "initialhr": ["Heart Rate (bpm)", 40, 130],
+                  "initialrr": ["Respiratory Rate (bpm)", 6, 40]
     }
 
     assert type(data) == dict, ValueError('Invalid data format')
