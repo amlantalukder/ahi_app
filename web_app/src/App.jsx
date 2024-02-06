@@ -289,7 +289,7 @@ function App() {
               <ol>
                 <li>This prediction tool was designed to predict whether someone may have moderate to severe obstructive sleep apnea; it was NOT designed to predict other types of apnea, such as central or mixed apnea.</li>
                 <li>
-                  In testing on patients who had been diagnosed with moderate to severe sleep apnea (Apnea-Hypopnea Index &gt; 15), this prediction tool correctly classified 72% of them as having that condition. In testing on patients who had NOT been diagnosed with moderate to severe sleep apnea (Apnea-Hypopnea Index &ge; 15), this prediction tool correctly
+                  In testing on patients who had been diagnosed with moderate to severe sleep apnea (Apnea-Hypopnea Index &ge; 15), this prediction tool correctly classified 72% of them as having that condition. In testing on patients who had NOT been diagnosed with moderate to severe sleep apnea (Apnea-Hypopnea Index &lt; 15), this prediction tool correctly
                   classified 63% of them as NOT having that condition. Neither of these accuracies is 100%.
                 </li>
               </ol>
