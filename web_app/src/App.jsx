@@ -251,7 +251,7 @@ function App() {
                   setAgreement(!agreement);
                 }}
               ></input>
-              <span>You agree that this is a model prediction, not a clinical diagnosis and only your health care provider can diagnose you whether you have moderate to severe sleep apnea or not.</span>
+              <span>I acknowledge that this prediction is from a model-based screening tool and that the prediction is NOT a clinical diagnosis. Only a health-care provider can provide a proper diagnosis of moderate to severe sleep apnea.</span>
             </div>
             <div className="submit-btn">
               <input type="submit" value="Predict my OSA risk" disabled={!agreement} />
@@ -271,24 +271,27 @@ function App() {
               <p>
                 {ahi_level > 0.5 ? (
                   <>
-                    You have been predicted to have a <strong>high</strong> risk for moderate to severe sleep apnea. It is recommended that you discuss this prediction with your health care provider.
+                    Your predicted risk for moderate to severe sleep apnea is <strong>high</strong>.
                   </>
                 ) : (
                   <>
-                    You have been predicted to have a <strong>low</strong> risk for moderate to severe sleep apnea.
+                    Your predicted risk for moderate to severe sleep apnea is <strong>low</strong>.
                   </>
                 )}
               </p>
             </div>
             <div className="disclaimer">
               <strong>Agreement</strong>
-              <p>You have agreed that this is a screening tool/prediction, not a clinical test nor a diagnosis. Only your health care provider can diagnose you on whether you have moderate to severe sleep apnea.</p>
+              <p>You have acknowledged that this prediction is from a model-based screening tool and that the prediction is NOT a clinical diagnosis. Only a health-care provider can provide a proper diagnosis of moderate to severe sleep apnea.</p>
             </div>
             <div className="disclaimer">
               <strong>Disclaimer</strong>
               <ol>
-                <li>This web server does not predict whether you have central or mixed sleep apnea.</li>
-                <li>The tool has an average accuracy of 71.8% predicting if a person has a moderate to severe sleep apnea (AHI &gt; 15) and an average accuracy of 63.2% if a person does not have a moderate to severe sleep apnea (AHI &le; 15). Neither of the accuracies is at 100%. Many other factors such as comorbidities are not included in the model.</li>
+                <li>This prediction tool was designed to predict whether someone may have moderate to severe obstructive sleep apnea; it was NOT designed to predict other types of apnea, such as central or mixed apnea.</li>
+                <li>
+                  In testing on patients who had been diagnosed with moderate to severe sleep apnea (Apnea-Hypopnea Index &gt; 15), this prediction tool correctly classified 72% of them as having that condition. In testing on patients who had NOT been diagnosed with moderate to severe sleep apnea (Apnea-Hypopnea Index &ge; 15), this prediction tool correctly
+                  classified 63% of them as NOT having that condition. Neither of these accuracies is 100%.
+                </li>
               </ol>
             </div>
           </div>
