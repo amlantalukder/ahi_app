@@ -26,6 +26,5 @@ yarn-debug.log*
 yarn-error.log*
 
 .venv
-Procfile
 *.log
 __pycache__
